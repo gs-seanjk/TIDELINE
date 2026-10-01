@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tideline — Paper Trading Desk</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bg" aria-hidden="true">
+  <div class="layer" data-d="6"><div class="glyph">$ ₿ Σ</div></div>
+  <div class="layer grid" data-d="14"></div>
+  <div class="layer contours" data-d="26"><svg viewBox="0 0 1000 600" preserveAspectRatio="none" fill="none" stroke="var(--brass)" stroke-opacity=".18"><path d="M0 420C150 360 250 480 400 400S650 240 800 320 950 260 1000 240"/><path d="M0 460C160 400 260 520 410 440S660 280 810 360 960 300 1000 280"/><path d="M0 380C140 320 240 440 390 360S640 200 790 280 940 220 1000 200"/><path d="M0 500C170 440 270 560 420 480S670 320 820 400 970 340 1000 320"/></svg></div>
+  <div class="layer" data-d="40"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
+</div>
+
+<header>
+  <b>Tideline</b>
+  <div class="tape"><div class="tape-in" id="tape"></div></div>
+  <nav><a href="#desk">Desk</a><a href="#book">Book</a><a href="#heat">Heat</a></nav>
+</header>
+
+<main>
+  <section class="hero" id="top">
+    <div class="hero-in" id="heroIn" data-speed="-0.12">
+      <div class="sub" style="margin:0 0 10px"><span style="color:var(--mute)">Paper portfolio · simulated market</span></div>
+      <h1 class="eq" id="eq">$100,000</h1>
+      <div class="sub">
+        <div><span>Today</span><b id="dayPnl">—</b></div>
+        <div><span>Cash</span><b id="cash">—</b></div>
+        <div><span>Open positions</span><b id="npos">0</b></div>
+        <div><span>Best mover</span><b id="best">—</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="desk">
+    <h2 data-speed="0.06">The desk</h2>
+    <div class="cols">
+      <div class="panel" data-tilt>
+        <div class="tabs" id="tabs" role="group" aria-label="Symbols"></div>
+        <canvas id="chart" role="img" aria-label="Candlestick chart"></canvas>
+      </div>
+      <div class="panel" data-tilt>
+        <h3>Order ticket</h3>
+        <div class="ticket">
+          <label>Symbol<select id="tSym"></select></label>
+          <label>Quantity<input id="tQty" type="number" min="1" step="1" value="10"></label>
+          <div>Market <b id="tPx">—</b></div>
+          <div class="btns"><button class="buy" id="bBuy">Buy</button><button class="sell" id="bSell">Sell</button></div>
+          <div id="msg" role="status"></div>
+        </div>
+        <ul class="log" id="log"></ul>
+        <button class="rst" id="rst">Reset account</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="book">
+    <h2 data-speed="0.08">Watchlist, depth and positions</h2>
+    <div class="cols cols3">
+      <div class="panel" data-tilt><h3>Watchlist</h3><table><thead><tr><th>Symbol</th><th>Last</th><th>Chg</th></tr></thead><tbody id="watch"></tbody></table></div>
+      <div class="panel" data-tilt><h3>Order book <span id="bookSym"></span></h3><div class="book" id="depth"></div></div>
+      <div class="panel" data-tilt><h3>Positions</h3><table><thead><tr><th>Sym</th><th>Qty</th><th>P/L</th></tr></thead><tbody id="pos"></tbody></table></div>
+    </div>
+  </section>
+
+  <section id="heat">
+    <h2 data-speed="0.05">Heat</h2>
+    <div class="heat" id="heatGrid"></div>
+  </section>
+</main>
+<footer>Simulated prices and paper money only. Nothing here is real market data or financial advice.</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
